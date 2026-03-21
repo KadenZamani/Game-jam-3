@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StatBlock : MonoBehaviour
 {
     [SerializeField] private int hitPoints = 10;
+    [SerializeField] private float deathForceStrength = 2;
+    private Animator animator;
+    private bool isDead = false;
+    private Rigidbody[] bodies;
+    private NavMeshAgent agent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        bodies = GetComponentsInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,7 +29,16 @@ public class StatBlock : MonoBehaviour
         hitPoints -= damage;
         if (hitPoints <= 0)
         {
-            Object.Destroy(gameObject);
+            isDead = true;
+            agent.enabled = false;
+            animator.enabled = false;
+            Vector3 force = transform.forward * (5f* deathForceStrength) + Vector3.up * (2f*deathForceStrength);
+
+            foreach (Rigidbody body in bodies)
+            {
+                body.AddForce(force, ForceMode.Impulse);
+            }
+            Object.Destroy(gameObject, 5f);
         }
     }
         
