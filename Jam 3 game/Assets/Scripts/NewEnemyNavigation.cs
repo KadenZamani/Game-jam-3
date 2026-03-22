@@ -87,4 +87,9 @@ public class EnemyNavigation : MonoBehaviour
             goingToEnd = !goingToEnd;
         }
     }
+
+    public void setPlayer(GameObject player)
+    {
+        this.player = player;
+    }
 }
