@@ -6,6 +6,7 @@ public class BaseProjectileGun : MonoBehaviour
     [SerializeField] private Transform gunBarrel;
     [SerializeField] private float shotDelay;
     [SerializeField] private float shotSpeed;
+    [SerializeField] private AudioSource gunShotAudio;
     private bool canShoot = true;
     [SerializeField] private bool fullAuto = true;
     private float timer = 0;
@@ -31,6 +32,7 @@ public class BaseProjectileGun : MonoBehaviour
         if ((canShoot) && (fullAuto ? Input.GetButton("Fire1") : Input.GetButtonDown("Fire1")))
         {
             canShoot = false;
+            gunShotAudio.Play();
             GameObject shot = GameObject.Instantiate(ammo, gunBarrel.position, Quaternion.identity);
             shot.GetComponent<Rigidbody>().AddForce(gunBarrel.forward * shotSpeed, ForceMode.VelocityChange);
         }

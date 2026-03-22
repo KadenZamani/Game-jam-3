@@ -7,6 +7,7 @@ public class BaseHitScanGun : MonoBehaviour
     [SerializeField] private float shotDelay = 0.5f;
     [SerializeField] private bool fullAuto = true;
     [SerializeField] private GameObject hitLocation;
+    [SerializeField] private AudioSource gunShotAudio;
     private bool canShoot = true;
     private float timer = 0;
     [SerializeField] private int damage = 5;
@@ -32,6 +33,7 @@ public class BaseHitScanGun : MonoBehaviour
         if ((canShoot) && (fullAuto ? Input.GetButton("Fire1") : Input.GetButtonDown("Fire1")))
         {
             canShoot = false;
+            gunShotAudio.Play();
             Ray shotRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             RaycastHit hit;
             if (Physics.Raycast(shotRay, out hit)) 

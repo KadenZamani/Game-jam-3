@@ -1547,7 +1547,13 @@ MonoBehaviour:
   gunBarrel: {fileID: 638773456}
   shotDelay: 0.5
   shotSpeed: 80
+  gunShotAudio: {fileID: 1605057683}
   fullAuto: 1
+--- !u!82 &1605057683 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4945170955881951141, guid: 8160e6c8bf434f8498b758d935aa4047, type: 3}
+  m_PrefabInstance: {fileID: 2757928081387064669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1623815126
 PrefabInstance:
   m_ObjectHideFlags: 0
