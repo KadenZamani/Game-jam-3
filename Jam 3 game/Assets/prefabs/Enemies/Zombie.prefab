@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 7495511364518061221}
   - component: {fileID: 6521104210941359167}
   - component: {fileID: 544382438389489961}
+  - component: {fileID: -8621654278941998967}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -1906,6 +1907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatBlock
   hitPoints: 10
   deathForceStrength: 2
+  isDead: 0
 --- !u!136 &544382438389489961
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1929,6 +1931,18 @@ CapsuleCollider:
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-8621654278941998967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641749297177382565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01919738c7ea0e4480119280e6ecb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemycollision
 --- !u!1 &5664401576377824388
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class StatBlock : MonoBehaviour
     [SerializeField] private int hitPoints = 10;
     [SerializeField] private float deathForceStrength = 2;
     private Animator animator;
-    private bool isDead = false;
+    public bool isDead = false;
     private Rigidbody[] bodies;
     private NavMeshAgent agent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
