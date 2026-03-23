@@ -19,16 +19,12 @@ public class EnemySpawner : MonoBehaviour
     {
         if (startOnAwake)
         {
+            Debug.Log("Spawner started");
             StartCoroutine(SpawnLoop());
         }
     }
 
-    private void Update()
-    {
-        if (timeBetweenWaves < 10f) { 
-            timeBetweenWaves = 10f;
-        }
-    }
+    
     public void StartSpawning()
     {
         if (!isSpawning)
@@ -44,7 +40,9 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(SpawnWave());
-            yield return new WaitForSeconds(timeBetweenWaves-(ScoreManager.Instance.GetScore()*0.1f) );
+            float adjustedTime = Mathf.Max(5f, timeBetweenWaves - (ScoreManager.Instance.GetScore() * 0.2f));
+            Debug.Log("Score: " + ScoreManager.Instance.GetScore() + " | Next wave in: " + adjustedTime);
+            yield return new WaitForSeconds(adjustedTime);
         }
     }
 
