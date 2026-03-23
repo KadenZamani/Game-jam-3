@@ -9,6 +9,8 @@ public class StatBlock : MonoBehaviour
     public bool isDead = false;
     private Rigidbody[] bodies;
     private NavMeshAgent agent;
+    public ScoreManager scoreManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,14 +32,16 @@ public class StatBlock : MonoBehaviour
         if (hitPoints <= 0)
         {
             isDead = true;
+           
             agent.enabled = false;
             animator.enabled = false;
             Vector3 force = transform.forward * (5f* deathForceStrength) + Vector3.up * (2f*deathForceStrength);
-
+            
             foreach (Rigidbody body in bodies)
             {
                 body.AddForce(force, ForceMode.Impulse);
             }
+            FindObjectOfType<ScoreManager>().AddScore(1);
             Object.Destroy(gameObject, 5f);
         }
     }

@@ -23,6 +23,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (timeBetweenWaves < 10f) { 
+            timeBetweenWaves = 10f;
+        }
+    }
     public void StartSpawning()
     {
         if (!isSpawning)
@@ -38,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             yield return StartCoroutine(SpawnWave());
-            yield return new WaitForSeconds(timeBetweenWaves);
+            yield return new WaitForSeconds(timeBetweenWaves-(ScoreManager.Instance.GetScore()*0.1f) );
         }
     }
 
