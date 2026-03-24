@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverScreen : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     [SerializeField] private string gameScene;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown)
         {
             SceneManager.LoadScene(gameScene);
-            ScoreManager.Instance.score = 0;
-            Destroy(ScoreManager.Instance.gameObject);
         }
     }
 }
