@@ -7,7 +7,7 @@ public class GameOverScreen : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(gameScene);
             ScoreManager.Instance.score = 0;
